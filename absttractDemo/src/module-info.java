@@ -1,0 +1,9 @@
+/**
+ * 
+ */
+/**
+ * @author ismai
+ *
+ */
+module absttractDemo {
+}
