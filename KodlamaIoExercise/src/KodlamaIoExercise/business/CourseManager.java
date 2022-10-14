@@ -1,10 +1,11 @@
 package KodlamaIoExercise.business;
 
-import java.lang.System.Logger;
+
 import java.util.ArrayList;
 
 import KodlamaIoExercise.dataAccess.CoursesDao;
 import KodlamaIoExercise.entities.Course;
+import KodlamaIoExercise.logger.Logger;
 
 public class CourseManager {
 	private CoursesDao courseDao;
@@ -17,14 +18,16 @@ public class CourseManager {
 		this.loggers=loggers;
 	}
 	
-	public void add(Course course) {
+	public void add(Course course) throws Exception{
 		for(Course c : courses) {
-			if(course.getCoursePrice()>=0) {
+			if(course.getCoursePrice()>=0 || course.getCourseTitle().equalsIgnoreCase(c.getCourseTitle())) {
 				courseDao.add(course);
+			}else {
+				throw new Exception("Bu ad ile Kursumuz vardır veya Fiyatınız 0`dan düşük olamaz!");
 			}
 		}
 		for(Logger logger:loggers) {
-			logger.log("deneme");
+			logger.log(course.getCourseTitle());
 		}
 	}
 }

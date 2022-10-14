@@ -1,11 +1,12 @@
 package KodlamaIoExercise.business;
 
-import java.lang.System.Logger;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 
 import KodlamaIoExercise.dataAccess.TuitorsDao;
 import KodlamaIoExercise.entities.Tuitors;
+import KodlamaIoExercise.logger.Logger;
 
 public class TuitorManager {
 	private TuitorsDao tuitorDao;
@@ -25,7 +26,7 @@ public class TuitorManager {
 			}
 		}
 		for(Logger logger:loggers) {
-			System.out.println(logger);
+			logger.log(tuitor.getTuitorName());
 		}
 	}
 }
